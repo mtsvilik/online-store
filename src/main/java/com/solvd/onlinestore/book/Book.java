@@ -5,11 +5,25 @@ import java.math.BigDecimal;
 public class Book {
 
     private Long id;
-    private String title;
+    private String name;
     private Author author;
     private Genre genre;
+    private Bestseller bestseller;
+    private Sale sale;
     private PublishingHouse publishingHouse;
     private BigDecimal price;
+
+    public enum Bestseller {
+
+        FOR_ALL_TIMES, YEAR, MONTH, WEEK
+
+    }
+
+    public enum Genre {
+
+        FICTION, SCIENCE_FICTION, PSYCHOLOGY, EDUCATION, BUSINESS
+
+    }
 
     public Long getId() {
         return id;
@@ -19,12 +33,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Author getAuthor() {
@@ -57,5 +71,21 @@ public class Book {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Bestseller getBestseller() {
+        return bestseller;
+    }
+
+    public void setBestseller(Bestseller bestseller) {
+        this.bestseller = bestseller;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
     }
 }

@@ -1,9 +1,10 @@
 package com.solvd.onlinestore.book;
 
-public class PublishingHouse {
+public class Country {
 
     private Long id;
     private String name;
+    private String code;
 
     public Long getId() {
         return id;
@@ -19,5 +20,13 @@ public class PublishingHouse {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

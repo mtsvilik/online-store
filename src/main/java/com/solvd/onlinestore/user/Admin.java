@@ -1,15 +1,13 @@
-package com.solvd.onlinestore.human;
+package com.solvd.onlinestore.user;
 
-import com.solvd.onlinestore.personalinfo.Card;
-import com.solvd.onlinestore.personalinfo.Contact;
+import java.math.BigDecimal;
 
-public class Customer {
+public class Admin {
 
     private Long id;
     private String firstName;
     private String lastName;
-    private Contact contact;
-    private Card card;
+    private BigDecimal salary;
 
     public Long getId() {
         return id;
@@ -35,19 +33,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Contact getContact() {
-        return contact;
+    public BigDecimal getSalary() {
+        return salary;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
     }
 }
