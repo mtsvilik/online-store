@@ -14,15 +14,11 @@ public class Book {
     private BigDecimal price;
 
     public enum Bestseller {
-
         FOR_ALL_TIMES, YEAR, MONTH, WEEK
-
     }
 
     public enum Genre {
-
         FICTION, SCIENCE_FICTION, PSYCHOLOGY, EDUCATION, BUSINESS
-
     }
 
     public Long getId() {
