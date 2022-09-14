@@ -5,7 +5,7 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
-    private String country;
+    private Country country;
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 }

@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.onlinestore;
+package com.solvd.onlinestore.book;
 
 public enum Sale {
 
@@ -10,6 +10,14 @@ public enum Sale {
     private String title;
 
     Sale(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
         this.title = title;
     }
 }
