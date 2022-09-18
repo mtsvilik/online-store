@@ -121,8 +121,10 @@ insert into online_store_customers(online_store_id, customer_id) values
 	(3, 2),
 	(3, 1);
 
+-- display id, name, genre, price fields from books
 select id, name, genre, price from books;
 
+-- display authors and their countries
 select
 a.id as author_id, a.first_name, a.last_name,
 c.id as country_id, c.name, c.code
@@ -130,6 +132,8 @@ from authors a
 inner join countries c
 on a.country_id = c.id;
 
+-- display authors and their countries, where the country name contains e,
+-- and the author's surname is "King".
 select
 a.id as author_id, a.first_name, a.last_name,
 c.id as country_id, c.name, c.code
@@ -142,6 +146,7 @@ and a.last_name = 'King';
 update authors set last_name = '' where id = 3;
 update authors set last_name = 'Anina' where id = 3;
 
+-- display authors and their countries
 select
 a.id as author_id, a.first_name, a.last_name,
 c.id as country_id, c.name, c.code
@@ -149,6 +154,7 @@ from authors a
 right join countries c
 on a.country_id = c.id;
 
+-- display authors and their countries
 select
 a.id as author_id, a.first_name, a.last_name,
 c.id as country_id, c.name, c.code
@@ -158,6 +164,7 @@ on a.country_id = c.id;
 
 update authors set last_name = 'Pelevin' where id = 4;
 
+--display customers and their contacts and sort by customer's name not alphabetically
 select
 cu.id as customer_id, cu.first_name, cu.last_name,
 co.id as contact_id, co.email, co.password, co.phone_number
@@ -166,6 +173,7 @@ join contacts co
 on cu.contact_id = co.id
 order by first_name desc;
 
+--display customers, their contacts and cards and sort by customer's surname by alphabet
 select
 cu.id as customer_id, cu.first_name, cu.last_name,
 co.id as contact_id, co.email, co.password, co.phone_number,
@@ -177,6 +185,8 @@ join cards ca
 on cu.card_id = ca.id
 order by last_name;
 
+-- display books, online_stores and publishing_houses, where the book name contains "i",
+-- the book should be sold at a discount and should be a bestseller
 select
 b.id as book_id, b.name, b.genre, b.bestseller, b.sale, b.price,
 ph.id as publishing_house_id, ph.name,
@@ -190,6 +200,7 @@ where b.name like '%i%'
 and b.sale is not null
 and b.bestseller is not null;
 
+--display books, online_stores, publishing_houses and admins of online stores
 select
 b.id as book_id, b.name, b.genre, b.bestseller, b.sale, b.price,
 ph.id as publishing_house_id, ph.name,
