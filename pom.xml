@@ -6,7 +6,7 @@
 
     <groupId>com.solvd</groupId>
     <artifactId>online-store-books</artifactId>
-    <version>15.2-SNAPSHOT</version>
+    <version>16.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
