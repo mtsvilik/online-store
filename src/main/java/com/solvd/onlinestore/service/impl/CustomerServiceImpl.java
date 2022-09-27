@@ -17,7 +17,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer create(Long contactId, Long cardId, Customer customer) {
-        return null;
+        customer.setId(null);
+        customerRepository.create(contactId, cardId, customer);
+        return customer;
     }
 
     @Override

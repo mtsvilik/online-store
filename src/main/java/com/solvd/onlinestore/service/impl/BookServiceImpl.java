@@ -15,15 +15,16 @@ public class BookServiceImpl implements BookService {
         this.bookRepository = new BookRepositoryImpl();
     }
 
-
     @Override
     public Book create(Long onlineStoreId, Long publishingHouseId, Book book) {
-        return null;
+        book.setId(null);
+        bookRepository.create(onlineStoreId, publishingHouseId, book);
+        return book;
     }
 
     @Override
     public List<Book> getAll() {
-       return bookRepository.findAll();
+        return bookRepository.findAll();
     }
 
     @Override

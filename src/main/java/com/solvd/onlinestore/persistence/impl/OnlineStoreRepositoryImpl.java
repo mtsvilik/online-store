@@ -18,11 +18,11 @@ public class OnlineStoreRepositoryImpl implements OnlineStoreRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public void create(OnlineStore onlineStore) {
+    public void create(Long adminId, OnlineStore onlineStore) {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "insert into online_stores (admin_id, name) values (?, ?);";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setLong(1, onlineStore.getAdmin().getId());
+            preparedStatement.setLong(1, adminId);
             preparedStatement.setString(2, onlineStore.getName());
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();

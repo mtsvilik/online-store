@@ -124,6 +124,7 @@ public class BookRepositoryImpl implements BookRepository {
         String update = "update books set name = ? where id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
             preparedStatement.setString(1, book.getName());
+            preparedStatement.setLong(2, book.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DataUpdateException("Can't update a book", e);

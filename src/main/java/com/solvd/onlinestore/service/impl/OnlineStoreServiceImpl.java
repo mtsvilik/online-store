@@ -1,10 +1,10 @@
 package com.solvd.onlinestore.service.impl;
 
-import com.solvd.onlinestore.domain.Admin;
 import com.solvd.onlinestore.domain.OnlineStore;
 import com.solvd.onlinestore.persistence.OnlineStoreRepository;
 import com.solvd.onlinestore.persistence.impl.OnlineStoreRepositoryImpl;
-import com.solvd.onlinestore.service.AdminService;
+import com.solvd.onlinestore.service.BookService;
+import com.solvd.onlinestore.service.CustomerService;
 import com.solvd.onlinestore.service.OnlineStoreService;
 
 import java.util.Optional;
@@ -12,20 +12,28 @@ import java.util.Optional;
 public class OnlineStoreServiceImpl implements OnlineStoreService {
 
     private final OnlineStoreRepository onlineStoreRepository;
-    private final AdminService adminService;
+    private final CustomerService customerService;
+    private final BookService bookService;
 
     public OnlineStoreServiceImpl() {
         this.onlineStoreRepository = new OnlineStoreRepositoryImpl();
-        this.adminService = new AdminServiceImpl();
+        this.customerService = new CustomerServiceImpl();
+        this.bookService = new BookServiceImpl();
     }
 
     @Override
-    public OnlineStore create(OnlineStore onlineStore) {
+    public OnlineStore create(Long adminId, OnlineStore onlineStore) {
         onlineStore.setId(null);
-        onlineStoreRepository.create(onlineStore);
-        if (onlineStore.getAdmin() != null) {
-            Admin admin = adminService.create(onlineStore.getAdmin());
-            onlineStore.setAdmin(admin);
+        onlineStoreRepository.create(adminId, onlineStore);
+
+        if (onlineStore.getBooks() != null) {
+            onlineStore.getBooks()
+                    .forEach(book -> bookService.create(onlineStore.getId(), book.getPublishingHouse().getId(), book));
+        }
+
+        if (onlineStore.getCustomers() != null) {
+            onlineStore.getCustomers()
+                    .forEach(customer -> customerService.create(customer.getContact().getId(), customer.getCard().getId(), customer));
         }
         return onlineStore;
     }

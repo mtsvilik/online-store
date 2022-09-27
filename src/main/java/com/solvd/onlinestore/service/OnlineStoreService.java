@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface OnlineStoreService {
 
-    OnlineStore create(OnlineStore onlineStore);
+    OnlineStore create(Long adminId, OnlineStore onlineStore);
 
     Optional<OnlineStore> getByName(String name);
 

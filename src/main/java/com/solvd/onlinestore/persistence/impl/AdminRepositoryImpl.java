@@ -7,15 +7,11 @@ import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.domain.exception.DataUpdateException;
 import com.solvd.onlinestore.persistence.AdminRepository;
 import com.solvd.onlinestore.persistence.ConnectionPool;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
 
 public class AdminRepositoryImpl implements AdminRepository {
-
-    private static final Logger LOGGER = LogManager.getLogger(AdminRepositoryImpl.class);
 
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
@@ -51,7 +47,6 @@ public class AdminRepositoryImpl implements AdminRepository {
             if (resultSet.next()) {
                 exists = true;
             }
-            LOGGER.info("salary exists? {}", exists);
             return exists;
         } catch (SQLException e) {
             throw new DataNotFoundException("Can't find admin by salary", e);

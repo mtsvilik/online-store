@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface OnlineStoreRepository {
 
-    void create(OnlineStore onlineStore);
+    void create(Long adminId, OnlineStore onlineStore);
 
     Optional<OnlineStore> findByName(String name);
 

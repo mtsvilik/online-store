@@ -2,10 +2,8 @@ package com.solvd.onlinestore;
 
 import com.solvd.onlinestore.domain.*;
 import com.solvd.onlinestore.service.BookService;
-import com.solvd.onlinestore.service.OnlineStoreService;
 import com.solvd.onlinestore.service.PublishingHouseService;
 import com.solvd.onlinestore.service.impl.BookServiceImpl;
-import com.solvd.onlinestore.service.impl.OnlineStoreServiceImpl;
 import com.solvd.onlinestore.service.impl.PublishingHouseServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -64,6 +62,7 @@ public class Main {
         firstBook.setPrice(BigDecimal.valueOf(88));
 
         Book secondBook = new Book();
+        secondBook.setId(12L);
         secondBook.setName("The Patient's Secret");
         secondBook.setAuthor(secondAuthor);
         secondBook.setGenre(Book.Genre.valueOf("FICTION"));
@@ -124,9 +123,6 @@ public class Main {
         onlineStore.setAdmin(firstAdmin);
         onlineStore.setBooks(books);
         onlineStore.setCustomers(customers);
-
-//        OnlineStoreService onlineStoreService = new OnlineStoreServiceImpl();
-//        onlineStoreService.create(onlineStore);
 
         BookService bookService = new BookServiceImpl();
         LOGGER.info(bookService.getAll());
