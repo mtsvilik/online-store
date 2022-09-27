@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.personalinfo;
+package com.solvd.onlinestore.domain;
 
 import java.time.LocalDate;
 
@@ -39,5 +39,15 @@ public class Card {
 
     public void setValidityPeriod(LocalDate validityPeriod) {
         this.validityPeriod = validityPeriod;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", number=" + number +
+                ", validityPeriod=" + validityPeriod +
+                '}';
     }
 }

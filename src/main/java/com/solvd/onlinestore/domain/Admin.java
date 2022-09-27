@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.user;
+package com.solvd.onlinestore.domain;
 
 import java.math.BigDecimal;
 
@@ -39,5 +39,15 @@ public class Admin {
 
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }

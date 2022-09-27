@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.personalinfo;
+package com.solvd.onlinestore.domain;
 
 public class Contact {
 
@@ -37,5 +37,15 @@ public class Contact {
 
     public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                '}';
     }
 }

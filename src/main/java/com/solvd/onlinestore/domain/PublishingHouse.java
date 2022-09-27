@@ -1,10 +1,9 @@
-package com.solvd.onlinestore.book;
+package com.solvd.onlinestore.domain;
 
-public class Country {
+public class PublishingHouse {
 
     private Long id;
     private String name;
-    private String code;
 
     public Long getId() {
         return id;
@@ -22,11 +21,11 @@ public class Country {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    @Override
+    public String toString() {
+        return "PublishingHouse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

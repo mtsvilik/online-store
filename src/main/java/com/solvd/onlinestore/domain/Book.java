@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.book;
+package com.solvd.onlinestore.domain;
 
 import java.math.BigDecimal;
 
@@ -83,5 +83,19 @@ public class Book {
 
     public void setSale(Sale sale) {
         this.sale = sale;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author=" + author +
+                ", genre=" + genre +
+                ", bestseller=" + bestseller +
+                ", sale=" + sale +
+                ", publishingHouse=" + publishingHouse +
+                ", price=" + price +
+                '}';
     }
 }

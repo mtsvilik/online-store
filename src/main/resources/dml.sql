@@ -1,7 +1,5 @@
 use online_stores_db;
 
-insert into online_stores(name) values ('OZ.by'), ('Chitatel.by'), ('Kniga.by');
-
 insert into admins(first_name, last_name, salary) values ('Max', 'Maximov', 1000);
 insert into admins(first_name, last_name, salary) values ('Den', 'Denisov', 1500);
 insert into admins(first_name, last_name, salary) values ('Vlad', 'Vladov', 1250);
@@ -255,6 +253,18 @@ id, name
 from books
 where publishing_house_id = 4
 order by name;
+
+--display books, publishing_houses and authors
+select b.id as book_id, b.name, b.genre, b.bestseller, b.sale, b.price,
+ph.id as publishing_house_id, ph.name,
+a.id as author_id, a.first_name, a.last_name
+from books b
+left join publishing_houses ph
+on b.publishing_house_id = ph.id
+left join author_books ab
+on b.id = ab.book_id
+left join authors a
+on ab.author_id = a.id;
 
 
 

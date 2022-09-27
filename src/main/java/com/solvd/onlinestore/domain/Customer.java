@@ -1,8 +1,8 @@
-package com.solvd.onlinestore.user;
+package com.solvd.onlinestore.domain;
 
-import com.solvd.onlinestore.personalinfo.Card;
-import com.solvd.onlinestore.personalinfo.Contact;
-import com.solvd.onlinestore.personalinfo.ShoppingCart;
+import com.solvd.onlinestore.domain.Card;
+import com.solvd.onlinestore.domain.Contact;
+import com.solvd.onlinestore.domain.ShoppingCart;
 
 public class Customer {
 
@@ -59,5 +59,17 @@ public class Customer {
 
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", shoppingCart=" + shoppingCart +
+                ", contact=" + contact +
+                ", card=" + card +
+                '}';
     }
 }

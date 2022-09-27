@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.book;
+package com.solvd.onlinestore.domain;
 
 public class Author {
 
@@ -37,5 +37,15 @@ public class Author {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", country=" + country +
+                '}';
     }
 }
