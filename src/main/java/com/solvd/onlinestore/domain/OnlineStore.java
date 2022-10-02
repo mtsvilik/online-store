@@ -1,8 +1,4 @@
-package com.solvd.onlinestore;
-
-import com.solvd.onlinestore.book.Book;
-import com.solvd.onlinestore.user.Admin;
-import com.solvd.onlinestore.user.Customer;
+package com.solvd.onlinestore.domain;
 
 import java.util.List;
 
@@ -52,5 +48,16 @@ public class OnlineStore {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    @Override
+    public String toString() {
+        return "OnlineStore{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", admin=" + admin +
+                ", books=" + books +
+                ", customers=" + customers +
+                '}';
     }
 }

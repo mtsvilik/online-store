@@ -1,7 +1,6 @@
-package com.solvd.onlinestore.personalinfo;
+package com.solvd.onlinestore.domain;
 
-import com.solvd.onlinestore.book.Book;
-import com.solvd.onlinestore.user.Customer;
+import com.solvd.onlinestore.domain.Book;
 
 import java.util.List;
 
@@ -24,5 +23,13 @@ public class ShoppingCart {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "id=" + id +
+                ", books=" + books +
+                '}';
     }
 }

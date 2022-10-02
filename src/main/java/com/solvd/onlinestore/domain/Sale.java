@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.book;
+package com.solvd.onlinestore.domain;
 
 public enum Sale {
 
