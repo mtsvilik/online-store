@@ -1,12 +1,13 @@
 package com.solvd.onlinestore.persistence;
 
 import com.solvd.onlinestore.domain.Book;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface BookRepository {
 
-    void create(Long onlineStoreId, Long publishingHouseId, Book book);
+    void create(@Param("onlineStoreId") Long onlineStoreId, @Param("publishingHouseId") Long publishingHouseId, @Param("book") Book book);
 
     List<Book> findAll();
 

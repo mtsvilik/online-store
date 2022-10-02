@@ -2,17 +2,19 @@ package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.Admin;
 import com.solvd.onlinestore.persistence.AdminRepository;
+import com.solvd.onlinestore.persistence.impl.AdminMapperImpl;
 import com.solvd.onlinestore.persistence.impl.AdminRepositoryImpl;
 import com.solvd.onlinestore.service.AdminService;
 
-import java.math.BigDecimal;
+import java.util.Optional;
 
 public class AdminServiceImpl implements AdminService {
 
     private final AdminRepository adminRepository;
 
     public AdminServiceImpl() {
-        this.adminRepository = new AdminRepositoryImpl();
+        //this.adminRepository = new AdminRepositoryImpl();
+        this.adminRepository = new AdminMapperImpl();
     }
 
     @Override
@@ -23,8 +25,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean findAdminBySalary(BigDecimal salary) {
-        return false;
+    public Optional<Admin> getByLastName(String lastName) {
+        return adminRepository.findByLastName(lastName);
     }
 
     @Override

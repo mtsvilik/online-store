@@ -87,8 +87,8 @@ public class OnlineStoreRepositoryImpl implements OnlineStoreRepository {
         Connection connection = CONNECTION_POOL.getConnection();
         String update = "update online_stores set name = ? where id = ? ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
-            preparedStatement.setLong(1, onlineStore.getId());
-            preparedStatement.setString(2, onlineStore.getName());
+            preparedStatement.setString(1, onlineStore.getName());
+            preparedStatement.setLong(2, onlineStore.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DataUpdateException("Can't update an online store", e);

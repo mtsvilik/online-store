@@ -8,7 +8,7 @@ public interface CustomerService {
 
     Customer create(Long contactId, Long cardId, Customer customer);
 
-    Optional<Customer> findByLastName(String lastName);
+    Optional<Customer> getByLastName(String lastName);
 
     void update(Customer customer);
 

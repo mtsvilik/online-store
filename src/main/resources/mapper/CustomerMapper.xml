@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="com.solvd.onlinestore.persistence.CustomerRepository">
+    <insert id="create" keyColumn="id" keyProperty="customer.id" useGeneratedKeys="true">
+        insert into customers (contact_id, card_id, first_name, last_name)
+        values (#{contactId}, #{cardId}, #{customer.firstName}, #{customer.lastName})
+    </insert>
+
+    <select id= "findByLastName" resultMap="CustomerResultMap">
+        select id from customers where last_name = #{lastName}
+    </select>
+
+    <resultMap id="CustomerResultMap" type="com.solvd.onlinestore.domain.Customer" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property= "last_name" column="lastName"/>
+    </resultMap>
+
+    <update id= "update" useGeneratedKeys="false">
+        update customers set last_name = #{lastName} where id = #{id}
+    </update>
+
+    <delete id= "delete">
+        delete from customers where id = #{id}
+    </delete>
+</mapper>
