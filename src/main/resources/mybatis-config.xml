@@ -19,5 +19,7 @@
         <mapper resource="mapper/BookMapper.xml"/>
         <mapper resource="mapper/CustomerMapper.xml"/>
         <mapper resource="mapper/PublishingHouseMapper.xml"/>
+        <mapper resource="mapper/AuthorMapper.xml"/>
+        <mapper resource="mapper/CountryMapper.xml"/>
     </mappers>
 </configuration>

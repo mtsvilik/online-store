@@ -1,10 +1,8 @@
 package com.solvd.onlinestore;
 
 import com.solvd.onlinestore.domain.*;
-import com.solvd.onlinestore.persistence.PublishingHouseRepository;
-import com.solvd.onlinestore.persistence.impl.AdminMapperImpl;
-import com.solvd.onlinestore.service.*;
-import com.solvd.onlinestore.service.impl.*;
+import com.solvd.onlinestore.service.BookService;
+import com.solvd.onlinestore.service.impl.BookServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,11 +30,15 @@ public class Main {
 
         Country firstCountry = new Country();
         firstCountry.setName("USA");
-        firstCountry.setCode("USA 840");
+        firstCountry.setCode("USA840");
 
         Country secondCountry = new Country();
         secondCountry.setName("Russian Federation");
         secondCountry.setCode("RUS 643");
+
+        Country thirdCountry = new Country();
+        thirdCountry.setName("SWEDEN");
+        thirdCountry.setCode("SWE 752");
 
         Author firstAuthor = new Author();
         firstAuthor.setFirstName("Fyodor");
@@ -123,22 +125,7 @@ public class Main {
         onlineStore.setBooks(books);
         onlineStore.setCustomers(customers);
 
-//        OnlineStoreService onlineStoreService = new OnlineStoreServiceImpl();
-//        System.out.println(onlineStoreService.getByName("Litres"));
-
-//        AdminService adminService = new AdminServiceImpl();
-//        adminService.update(firstAdmin);
-
-//        BookService bookService = new BookServiceImpl();
-//        bookService.update(firstBook);
-
-//        CustomerService customerService = new CustomerServiceImpl();
-//        System.out.println(customerService.getByLastName("Moroz"));
-
-//        PublishingHouseService publishingHouseService = new PublishingHouseServiceImpl();
-//        publishingHouseService.create(firstPublishingHouse);
-
         BookService bookService = new BookServiceImpl();
-        System.out.println(bookService.getAll());
+        LOGGER.info(bookService.getAll());
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace ="com.solvd.onlinestore.persistence.BookRepository">
     <insert id="create" keyColumn="id" keyProperty="book.id" useGeneratedKeys="true">
-        insert into books(online_store_id, publishing_house_id, name, genre, bestseller, sale, price)
+        insert into books (online_store_id, publishing_house_id, name, genre, bestseller, sale, price)
         values (#{onlineStoreId}, #{publishingHouseId}, #{book.name}, #{book.genre}, #{book.bestseller}, #{book.sale}, #{book.price})
     </insert>
 
@@ -30,6 +30,7 @@
         <result property= "bestseller" column="book_bestseller"/>
         <result property= "sale" column="book_sale"/>
         <result property= "price" column="book_price"/>
+        <association property= "author" resultMap="com.solvd.onlinestore.persistence.AuthorRepository.AuthorResultMap"/>
         <association property= "publishingHouse" resultMap="com.solvd.onlinestore.persistence.PublishingHouseRepository.PublishingHouseResultMap"/>
     </resultMap>
 
