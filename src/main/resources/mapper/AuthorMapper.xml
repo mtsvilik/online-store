@@ -3,7 +3,7 @@
 <mapper namespace ="com.solvd.onlinestore.persistence.AuthorRepository">
     <insert id="create" keyColumn="id" keyProperty="author.id" useGeneratedKeys="true">
         insert into authors (country_id, first_name, last_name)
-        values (#{countryId}, #{author.firstName}, #{author.lastName})
+        values (#{author.countryId}, #{author.firstName}, #{author.lastName})
     </insert>
 
     <select id= "findByLastName" resultMap="AuthorResultMap">
@@ -14,6 +14,7 @@
         <id property="id" column="id"/>
         <result property= "firstName" column="first_name"/>
         <result property= "lastName" column="last_name"/>
-        <association property= "country" resultMap="com.solvd.onlinestore.persistence.CountryRepository.CountryResultMap"/>
+        <association property= "country" columnPrefix="country_"
+                     resultMap="com.solvd.onlinestore.persistence.CountryRepository.CountryResultMap"/>
     </resultMap>
 </mapper>

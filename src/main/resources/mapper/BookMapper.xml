@@ -11,7 +11,7 @@
         b.id as book_id, b.name as book_name, b.genre as book_genre, b.bestseller as book_bestseller, b.sale as book_sale, b.price as book_price,
         ph.id as publishing_house_id, ph.name as publishing_house_name,
         a.id as author_id, a.first_name as author_first_name, a.last_name as author_last_name,
-        c.id as country_id, c.name as country_name, c.code as country_code
+        c.id as author_country_id, c.name as author_country_name, c.code as author_country_code
         from books b
         left join publishing_houses ph
         on b.publishing_house_id = ph.id
@@ -30,8 +30,10 @@
         <result property= "bestseller" column="book_bestseller"/>
         <result property= "sale" column="book_sale"/>
         <result property= "price" column="book_price"/>
-        <association property= "author" resultMap="com.solvd.onlinestore.persistence.AuthorRepository.AuthorResultMap"/>
-        <association property= "publishingHouse" resultMap="com.solvd.onlinestore.persistence.PublishingHouseRepository.PublishingHouseResultMap"/>
+        <association property= "author" columnPrefix="author_"
+                     resultMap="com.solvd.onlinestore.persistence.AuthorRepository.AuthorResultMap"/>
+        <association property= "publishingHouse" columnPrefix="publishing_house_"
+                     resultMap="com.solvd.onlinestore.persistence.PublishingHouseRepository.PublishingHouseResultMap"/>
     </resultMap>
 
     <update id= "update" useGeneratedKeys="false">
