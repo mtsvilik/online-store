@@ -62,8 +62,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         Connection connection = CONNECTION_POOL.getConnection();
         String update = "update customers set last_name = ? where id = ?; ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
-            preparedStatement.setLong(1, customer.getId());
-            preparedStatement.setString(2, customer.getLastName());
+            preparedStatement.setString(1, customer.getLastName());
+            preparedStatement.setLong(2, customer.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DataUpdateException("Can't update a customer", e);

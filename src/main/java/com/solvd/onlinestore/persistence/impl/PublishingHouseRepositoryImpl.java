@@ -18,7 +18,7 @@ public class PublishingHouseRepositoryImpl implements PublishingHouseRepository 
     @Override
     public void create(PublishingHouse publishingHouse) {
         Connection connection = CONNECTION_POOL.getConnection();
-        String insertInto = "insert into publishing_houses (name) values (?); ";
+        String insertInto = "insert into publishing_houses name value ? ";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, publishingHouse.getName());
             preparedStatement.executeUpdate();

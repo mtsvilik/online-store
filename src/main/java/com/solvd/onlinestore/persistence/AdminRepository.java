@@ -2,13 +2,13 @@ package com.solvd.onlinestore.persistence;
 
 import com.solvd.onlinestore.domain.Admin;
 
-import java.math.BigDecimal;
+import java.util.Optional;
 
 public interface AdminRepository {
 
     void create(Admin admin);
 
-    boolean findAdminBySalary(BigDecimal salary);
+    Optional<Admin> findByLastName(String lastName);
 
     void update(Admin admin);
 

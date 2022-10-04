@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="com.solvd.onlinestore.persistence.PublishingHouseRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into publishing_houses name value #{name}
+    </insert>
+
+    <select id= "findByName" resultMap="PublishingHouseResultMap">
+        select id from publishing_houses where name = #{name}
+    </select>
+
+    <resultMap id="PublishingHouseResultMap" type="com.solvd.onlinestore.domain.PublishingHouse" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property= "name" column="name"/>
+    </resultMap>
+
+    <update id= "update" useGeneratedKeys="false">
+        update publishing_houses set name = #{name} where id = #{id}
+    </update>
+
+    <delete id= "delete">
+        delete from publishing_houses where id = #{id}
+    </delete>
+</mapper>

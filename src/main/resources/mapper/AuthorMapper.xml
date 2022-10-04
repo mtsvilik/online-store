@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="com.solvd.onlinestore.persistence.AuthorRepository">
+    <insert id="create" keyColumn="id" keyProperty="author.id" useGeneratedKeys="true">
+        insert into authors (country_id, first_name, last_name)
+        values (#{author.countryId}, #{author.firstName}, #{author.lastName})
+    </insert>
+
+    <select id= "findByLastName" resultMap="AuthorResultMap">
+        select id, first_name, last_Name from authors where last_name = #{lastName}
+    </select>
+
+    <resultMap id="AuthorResultMap" type="com.solvd.onlinestore.domain.Author" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property= "firstName" column="first_name"/>
+        <result property= "lastName" column="last_name"/>
+        <association property= "country" columnPrefix="country_"
+                     resultMap="com.solvd.onlinestore.persistence.CountryRepository.CountryResultMap"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace ="com.solvd.onlinestore.persistence.CountryRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into countries (name, code) values (#{name}, #{code})
+    </insert>
+
+    <select id= "findByName" resultMap="CountryResultMap">
+        select id, name, code from countries where name = #{name}
+    </select>
+
+    <resultMap id="CountryResultMap" type="com.solvd.onlinestore.domain.Country" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property= "name" column="name"/>
+        <result property= "code" column="code"/>
+    </resultMap>
+</mapper>

@@ -2,9 +2,7 @@ package com.solvd.onlinestore;
 
 import com.solvd.onlinestore.domain.*;
 import com.solvd.onlinestore.service.BookService;
-import com.solvd.onlinestore.service.PublishingHouseService;
 import com.solvd.onlinestore.service.impl.BookServiceImpl;
-import com.solvd.onlinestore.service.impl.PublishingHouseServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,9 +18,10 @@ public class Main {
     public static void main(String[] args) {
 
         Admin firstAdmin = new Admin();
-        firstAdmin.setFirstName("Max");
-        firstAdmin.setLastName("Maximov");
-        firstAdmin.setSalary(BigDecimal.valueOf(1000));
+        firstAdmin.setId(3L);
+        firstAdmin.setFirstName("Vlad");
+        firstAdmin.setLastName("Mihailov");
+        firstAdmin.setSalary(BigDecimal.valueOf(1660));
 
         Admin secondAdmin = new Admin();
         secondAdmin.setFirstName("Den");
@@ -31,11 +30,15 @@ public class Main {
 
         Country firstCountry = new Country();
         firstCountry.setName("USA");
-        firstCountry.setCode("USA 840");
+        firstCountry.setCode("USA840");
 
         Country secondCountry = new Country();
         secondCountry.setName("Russian Federation");
         secondCountry.setCode("RUS 643");
+
+        Country thirdCountry = new Country();
+        thirdCountry.setName("SWEDEN");
+        thirdCountry.setCode("SWE 752");
 
         Author firstAuthor = new Author();
         firstAuthor.setFirstName("Fyodor");
@@ -48,13 +51,10 @@ public class Main {
         secondAuthor.setCountry(firstCountry);
 
         PublishingHouse firstPublishingHouse = new PublishingHouse();
-        firstPublishingHouse.setName("Casterman");
-
-        PublishingHouseService publishingHouseService = new PublishingHouseServiceImpl();
-        publishingHouseService.create(firstPublishingHouse);
+        firstPublishingHouse.setName("OMG");
 
         Book firstBook = new Book();
-        firstBook.setName("Crime and Punishment");
+        firstBook.setName("Crime and");
         firstBook.setAuthor(firstAuthor);
         firstBook.setGenre(Book.Genre.valueOf("FICTION"));
         firstBook.setBestseller(Book.Bestseller.valueOf("FOR_ALL_TIMES"));
@@ -62,7 +62,6 @@ public class Main {
         firstBook.setPrice(BigDecimal.valueOf(88));
 
         Book secondBook = new Book();
-        secondBook.setId(12L);
         secondBook.setName("The Patient's Secret");
         secondBook.setAuthor(secondAuthor);
         secondBook.setGenre(Book.Genre.valueOf("FICTION"));
@@ -101,8 +100,9 @@ public class Main {
         secondCard.setValidityPeriod(LocalDate.of(2025, 10, 10));
 
         Customer firstCustomer = new Customer();
+        firstCustomer.setId(20L);
         firstCustomer.setFirstName("Ekaterina");
-        firstCustomer.setLastName("Morozova");
+        firstCustomer.setLastName("Moroz");
         firstCustomer.setShoppingCart(firstShoppingCart);
         firstCustomer.setContact(firstContact);
         firstCustomer.setCard(firstCard);
@@ -119,6 +119,7 @@ public class Main {
         customers.add(secondCustomer);
 
         OnlineStore onlineStore = new OnlineStore();
+        onlineStore.setId(15L);
         onlineStore.setName("Litres");
         onlineStore.setAdmin(firstAdmin);
         onlineStore.setBooks(books);

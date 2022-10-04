@@ -2,6 +2,7 @@ package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.Book;
 import com.solvd.onlinestore.persistence.BookRepository;
+import com.solvd.onlinestore.persistence.impl.BookMapperImpl;
 import com.solvd.onlinestore.persistence.impl.BookRepositoryImpl;
 import com.solvd.onlinestore.service.BookService;
 
@@ -12,7 +13,8 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
 
     public BookServiceImpl() {
-        this.bookRepository = new BookRepositoryImpl();
+        //this.bookRepository = new BookRepositoryImpl();
+        this.bookRepository = new BookMapperImpl();
     }
 
     @Override

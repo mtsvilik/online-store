@@ -2,6 +2,7 @@ package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.Customer;
 import com.solvd.onlinestore.persistence.CustomerRepository;
+import com.solvd.onlinestore.persistence.impl.CustomerMapperImpl;
 import com.solvd.onlinestore.persistence.impl.CustomerRepositoryImpl;
 import com.solvd.onlinestore.service.CustomerService;
 
@@ -12,7 +13,8 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     public CustomerServiceImpl() {
-        this.customerRepository = new CustomerRepositoryImpl();
+        //this.customerRepository = new CustomerRepositoryImpl();
+        this.customerRepository = new CustomerMapperImpl();
     }
 
     @Override
@@ -23,8 +25,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> findByLastName(String lastName) {
-        return Optional.empty();
+    public Optional<Customer> getByLastName(String lastName) {
+        return customerRepository.findByLastName(lastName);
     }
 
     @Override
