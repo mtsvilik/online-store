@@ -9,7 +9,7 @@
         select id, name, code from countries where name = #{name}
     </select>
 
-    <resultMap id="CountryResultMap" type="com.solvd.onlinestore.domain.Country" autoMapping="false">
+    <resultMap id="CountryResultMap" type="com.solvd.onlinestore.domain.author.Country" autoMapping="false">
         <id property="id" column="id"/>
         <result property= "name" column="name"/>
         <result property= "code" column="code"/>

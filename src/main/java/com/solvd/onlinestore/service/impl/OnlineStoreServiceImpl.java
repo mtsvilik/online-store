@@ -1,9 +1,8 @@
 package com.solvd.onlinestore.service.impl;
 
-import com.solvd.onlinestore.domain.OnlineStore;
+import com.solvd.onlinestore.domain.onlinestore.OnlineStore;
 import com.solvd.onlinestore.persistence.OnlineStoreRepository;
 import com.solvd.onlinestore.persistence.impl.OnlineStoreMapperImpl;
-import com.solvd.onlinestore.persistence.impl.OnlineStoreRepositoryImpl;
 import com.solvd.onlinestore.service.OnlineStoreService;
 
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.service;
 
-import com.solvd.onlinestore.domain.Author;
+import com.solvd.onlinestore.domain.author.Author;
 
 import java.util.Optional;
 

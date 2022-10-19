@@ -9,7 +9,7 @@
         select id from publishing_houses where name = #{name}
     </select>
 
-    <resultMap id="PublishingHouseResultMap" type="com.solvd.onlinestore.domain.PublishingHouse" autoMapping="false">
+    <resultMap id="PublishingHouseResultMap" type="com.solvd.onlinestore.domain.book.PublishingHouse" autoMapping="false">
         <id property="id" column="id"/>
         <result property= "name" column="name"/>
     </resultMap>

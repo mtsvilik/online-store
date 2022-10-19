@@ -9,7 +9,7 @@
         select id from online_stores where name = #{name}
     </select>
 
-    <resultMap id="OnlineStoreResultMap" type="com.solvd.onlinestore.domain.OnlineStore" autoMapping="false">
+    <resultMap id="OnlineStoreResultMap" type="com.solvd.onlinestore.domain.onlinestore.OnlineStore" autoMapping="false">
         <id property="id" column="id"/>
         <result property= "name" column="name"/>
     </resultMap>

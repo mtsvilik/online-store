@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.persistence.impl;
 
-import com.solvd.onlinestore.domain.Book;
+import com.solvd.onlinestore.domain.book.Book;
 import com.solvd.onlinestore.persistence.BookRepository;
 import com.solvd.onlinestore.persistence.MyBatisConfig;
 import org.apache.ibatis.session.SqlSession;

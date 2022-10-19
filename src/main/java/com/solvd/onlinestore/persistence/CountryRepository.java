@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.persistence;
 
-import com.solvd.onlinestore.domain.Country;
+import com.solvd.onlinestore.domain.author.Country;
 
 import java.util.Optional;
 

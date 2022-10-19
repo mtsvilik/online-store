@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.persistence;
 
-import com.solvd.onlinestore.domain.OnlineStore;
+import com.solvd.onlinestore.domain.onlinestore.OnlineStore;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Optional;

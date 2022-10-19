@@ -1,13 +1,18 @@
-package com.solvd.onlinestore.domain;
+package com.solvd.onlinestore.domain.paymentmethod;
 
 import java.time.LocalDate;
 
-public class Card {
+public class Card implements IPay {
 
     private Long id;
     private String name;
     private Integer number;
     private LocalDate validityPeriod;
+
+    @Override
+    public void pay() {
+        System.out.println("Your payment was successful, thank you for choosing card");
+    }
 
     public Long getId() {
         return id;
