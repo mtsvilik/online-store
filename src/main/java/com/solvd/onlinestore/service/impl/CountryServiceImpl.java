@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.service.impl;
 
-import com.solvd.onlinestore.domain.Country;
+import com.solvd.onlinestore.domain.author.Country;
 import com.solvd.onlinestore.persistence.CountryRepository;
 import com.solvd.onlinestore.persistence.impl.CountryMapperImpl;
 import com.solvd.onlinestore.service.CountryService;

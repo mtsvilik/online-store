@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.service;
 
-import com.solvd.onlinestore.domain.PublishingHouse;
+import com.solvd.onlinestore.domain.book.PublishingHouse;
 
 import java.util.Optional;
 

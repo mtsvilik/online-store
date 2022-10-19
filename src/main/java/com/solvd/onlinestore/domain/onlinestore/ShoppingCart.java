@@ -1,6 +1,6 @@
-package com.solvd.onlinestore.domain;
+package com.solvd.onlinestore.domain.onlinestore;
 
-import com.solvd.onlinestore.domain.Book;
+import com.solvd.onlinestore.domain.book.Book;
 
 import java.util.List;
 

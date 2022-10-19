@@ -1,9 +1,8 @@
 package com.solvd.onlinestore.service.impl;
 
-import com.solvd.onlinestore.domain.Book;
+import com.solvd.onlinestore.domain.book.Book;
 import com.solvd.onlinestore.persistence.BookRepository;
 import com.solvd.onlinestore.persistence.impl.BookMapperImpl;
-import com.solvd.onlinestore.persistence.impl.BookRepositoryImpl;
 import com.solvd.onlinestore.service.BookService;
 
 import java.util.List;

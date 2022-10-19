@@ -1,4 +1,4 @@
-package com.solvd.onlinestore.domain;
+package com.solvd.onlinestore.domain.customer;
 
 public class Contact {
 

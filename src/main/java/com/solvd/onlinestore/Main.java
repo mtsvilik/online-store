@@ -1,6 +1,17 @@
 package com.solvd.onlinestore;
 
-import com.solvd.onlinestore.domain.*;
+import com.solvd.onlinestore.domain.author.Author;
+import com.solvd.onlinestore.domain.author.Country;
+import com.solvd.onlinestore.domain.book.Book;
+import com.solvd.onlinestore.domain.book.PublishingHouse;
+import com.solvd.onlinestore.domain.book.Sale;
+import com.solvd.onlinestore.domain.customer.*;
+import com.solvd.onlinestore.domain.onlinestore.Admin;
+import com.solvd.onlinestore.domain.onlinestore.OnlineStore;
+import com.solvd.onlinestore.domain.onlinestore.ShoppingCart;
+import com.solvd.onlinestore.domain.paymentmethod.Card;
+import com.solvd.onlinestore.domain.paymentmethod.PayPal;
+import com.solvd.onlinestore.domain.paymentmethod.PaymentMethodDecorator;
 import com.solvd.onlinestore.service.BookService;
 import com.solvd.onlinestore.service.impl.BookServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -54,7 +65,7 @@ public class Main {
         firstPublishingHouse.setName("OMG");
 
         Book firstBook = new Book();
-        firstBook.setName("Crime and");
+        firstBook.setName("The thorn birds");
         firstBook.setAuthor(firstAuthor);
         firstBook.setGenre(Book.Genre.valueOf("FICTION"));
         firstBook.setBestseller(Book.Bestseller.valueOf("FOR_ALL_TIMES"));
@@ -100,10 +111,8 @@ public class Main {
         secondCard.setValidityPeriod(LocalDate.of(2025, 10, 10));
 
         Customer firstCustomer = new Customer();
-        firstCustomer.setId(20L);
-        firstCustomer.setFirstName("Ekaterina");
-        firstCustomer.setLastName("Moroz");
-        firstCustomer.setShoppingCart(firstShoppingCart);
+        firstCustomer.setFirstName("Nikita");
+        firstCustomer.setLastName("Nikitin");
         firstCustomer.setContact(firstContact);
         firstCustomer.setCard(firstCard);
 
@@ -127,5 +136,60 @@ public class Main {
 
         BookService bookService = new BookServiceImpl();
         LOGGER.info(bookService.getAll());
+
+        /*
+         *Factory pattern is used to divide customers into categories.
+         */
+        Customer customer = CustomerFactory.getCustomer(CustomerType.REGULAR_CUSTOMER);
+        customer.setFirstName("Ivan");
+        customer.setLastName("Ivanov");
+
+        /*
+         *The builder pattern is used to create an immutable admin.
+         */
+        Admin admin = Admin.builder()
+                .id(1L)
+                .firstName("Marina")
+                .lastName("Marinina")
+                .salary(BigDecimal.valueOf(1200))
+                .build();
+
+        /*
+         *We can also use the builder to create mutable objects,
+         *to increase the readability of the place where we fill in the object.
+         */
+        admin.toBuilder()
+                .firstName("Olga")
+                .build();
+        /*
+         *Using the facade pattern, we encapsulated the entire complexity of the method and
+         * see only a "beautiful cover" of the method of buying a book in an online store.
+         */
+        firstBook.buyBook();
+
+        /*
+         *We have two methods to pay for purchases in the online store. Using the decorator pattern,
+         *we can choose any payment method that is convenient for us
+         */
+        PaymentMethodDecorator paymentMethod = new PaymentMethodDecorator();
+        paymentMethod.payWithCard();
+
+        /*
+         *Using the strategy pattern, we can choose any payment method that is convenient for us
+         */
+        firstCustomer.setPayment(new PayPal());
+        firstCustomer.getPayment().pay();
+
+        firstCustomer.setPayment(new Card());
+        firstCustomer.getPayment().pay();
+
+        /*
+         *Using the listener pattern, the customer of the online store can subscribe to the newsletter of notifications,
+         *receive notifications, unsubscribe from the newsletter
+         */
+        EventHolder.subscribe(EventType.SUBSCRIPTION, firstCustomer);
+        EventHolder.subscribe(EventType.SUBSCRIPTION, secondCustomer);
+        EventHolder.notify(EventType.SUBSCRIPTION);
+        EventHolder.unsubscribe(EventType.NO_SUBSCRIPTION, firstCustomer);
     }
 }

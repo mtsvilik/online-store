@@ -23,7 +23,7 @@
         on a.country_id = c.id;
     </select>
 
-    <resultMap id="BookResultMap" type="com.solvd.onlinestore.domain.Book" autoMapping="false">
+    <resultMap id="BookResultMap" type="com.solvd.onlinestore.domain.book.Book" autoMapping="false">
         <id property="id" column="book_id"/>
         <result property= "name" column="book_name"/>
         <result property= "genre" column="book_genre"/>

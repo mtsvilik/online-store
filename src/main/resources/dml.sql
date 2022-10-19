@@ -22,11 +22,11 @@ insert into contacts(email, password, phone_number) values ('petr@gmail.com', 'P
 insert into contacts(email, password, phone_number) values ('ivan@gmail.com', 'IVA678999', 295556677);
 
 insert into customers(contact_id, card_id, first_name, last_name)
-values (4, 1, 'Nikita', 'Nikitin'),
-	   (6, 2, 'Pavel', 'Pavlov'),
-	   (7, 3, 'Miron', 'Mironov'),
-	   (8, 4, 'Petr', 'Petrov'),
-	   (9, 5, 'Ivan', 'Ivanov');
+values (1, 1, 'Nikita', 'Nikitin'),
+	   (2, 2, 'Pavel', 'Pavlov'),
+	   (3, 3, 'Miron', 'Mironov'),
+	   (4, 4, 'Petr', 'Petrov'),
+	   (5, 5, 'Ivan', 'Ivanov');
 
 insert into countries(name, code)
 values ('Belarus', 'BLRv112'),

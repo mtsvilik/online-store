@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.service.impl;
 
-import com.solvd.onlinestore.domain.Author;
+import com.solvd.onlinestore.domain.author.Author;
 import com.solvd.onlinestore.persistence.AuthorRepository;
 import com.solvd.onlinestore.persistence.impl.AuthorMapperImpl;
 import com.solvd.onlinestore.service.AuthorService;

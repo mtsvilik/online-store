@@ -9,7 +9,7 @@
         select id from admins where last_name = #{lastName}
     </select>
 
-    <resultMap id="AdminResultMap" type="com.solvd.onlinestore.domain.Admin" autoMapping="false">
+    <resultMap id="AdminResultMap" type="com.solvd.onlinestore.domain.onlinestore.Admin" autoMapping="false">
         <id property="id" column="id"/>
         <result property= "lastName" column="last_name"/>
     </resultMap>

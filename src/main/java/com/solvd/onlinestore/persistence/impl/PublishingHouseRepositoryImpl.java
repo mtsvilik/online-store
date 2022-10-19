@@ -1,6 +1,6 @@
 package com.solvd.onlinestore.persistence.impl;
 
-import com.solvd.onlinestore.domain.PublishingHouse;
+import com.solvd.onlinestore.domain.book.PublishingHouse;
 import com.solvd.onlinestore.domain.exception.DataCreateException;
 import com.solvd.onlinestore.domain.exception.DataDeleteException;
 import com.solvd.onlinestore.domain.exception.DataNotFoundException;

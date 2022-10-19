@@ -10,7 +10,7 @@
         select id from customers where last_name = #{lastName}
     </select>
 
-    <resultMap id="CustomerResultMap" type="com.solvd.onlinestore.domain.Customer" autoMapping="false">
+    <resultMap id="CustomerResultMap" type="com.solvd.onlinestore.domain.customer.Customer" autoMapping="false">
         <id property="id" column="id"/>
         <result property= "last_name" column="lastName"/>
     </resultMap>

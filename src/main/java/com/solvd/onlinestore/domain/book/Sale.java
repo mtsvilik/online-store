@@ -1,11 +1,11 @@
-package com.solvd.onlinestore.domain;
+package com.solvd.onlinestore.domain.book;
 
 public enum Sale {
 
     SEVENTY_PERCENT("SALE 70%"),
     FIFTY_PERCENT("SALE 50%"),
     FORTY_PERCENT("SALE 40%"),
-    TWENTY_PERCENT("SALE 20$");
+    TWENTY_PERCENT("SALE 20%");
 
     private String title;
 

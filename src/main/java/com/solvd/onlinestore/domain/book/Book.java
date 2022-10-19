@@ -1,4 +1,6 @@
-package com.solvd.onlinestore.domain;
+package com.solvd.onlinestore.domain.book;
+
+import com.solvd.onlinestore.domain.author.Author;
 
 import java.math.BigDecimal;
 
@@ -19,6 +21,33 @@ public class Book {
 
     public enum Genre {
         FICTION, SCIENCE_FICTION, PSYCHOLOGY, EDUCATION, BUSINESS
+    }
+
+    public void buyBook() {
+        chooseBook();
+        payBook();
+        chooseDeliveryMethod(DeliveryType.BY_COURIER);
+    }
+
+    private void chooseBook() {
+        System.out.println("Choose a book in our online store and put it in the shopping cart");
+    }
+
+    private void payBook() {
+        System.out.println("Pay for the purchase");
+    }
+
+    private void chooseDeliveryMethod(DeliveryType type) {
+        switch (type) {
+            case BY_MAIL:
+                System.out.println("Your purchase will be delivered by mail");
+                break;
+            case BY_COURIER:
+                System.out.println("Your purchase will be delivered by courier");
+                break;
+            default:
+                break;
+        }
     }
 
     public Long getId() {

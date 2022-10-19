@@ -1,13 +1,11 @@
-package com.solvd.onlinestore.domain;
+package com.solvd.onlinestore.domain.author;
 
-import java.math.BigDecimal;
-
-public class Admin {
+public class Author {
 
     private Long id;
     private String firstName;
     private String lastName;
-    private BigDecimal salary;
+    private Country country;
 
     public Long getId() {
         return id;
@@ -33,21 +31,21 @@ public class Admin {
         this.lastName = lastName;
     }
 
-    public BigDecimal getSalary() {
-        return salary;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setSalary(BigDecimal salary) {
-        this.salary = salary;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     @Override
     public String toString() {
-        return "Admin{" +
+        return "Author{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", salary=" + salary +
+                ", country=" + country +
                 '}';
     }
 }

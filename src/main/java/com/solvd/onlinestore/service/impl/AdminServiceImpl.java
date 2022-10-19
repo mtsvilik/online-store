@@ -1,9 +1,8 @@
 package com.solvd.onlinestore.service.impl;
 
-import com.solvd.onlinestore.domain.Admin;
+import com.solvd.onlinestore.domain.onlinestore.Admin;
 import com.solvd.onlinestore.persistence.AdminRepository;
 import com.solvd.onlinestore.persistence.impl.AdminMapperImpl;
-import com.solvd.onlinestore.persistence.impl.AdminRepositoryImpl;
 import com.solvd.onlinestore.service.AdminService;
 
 import java.util.Optional;
