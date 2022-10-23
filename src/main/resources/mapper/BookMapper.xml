@@ -6,6 +6,10 @@
         values (#{onlineStoreId}, #{publishingHouseId}, #{book.name}, #{book.genre}, #{book.bestseller}, #{book.sale}, #{book.price})
     </insert>
 
+    <select id="findById" resultMap="BookResultMap">
+        select b.id as book_id, b.name as book_name from books b where b.id = #{id}
+    </select>
+
     <select id= "findAll" resultMap="BookResultMap">
         select
         b.id as book_id, b.name as book_name, b.genre as book_genre, b.bestseller as book_bestseller, b.sale as book_sale, b.price as book_price,

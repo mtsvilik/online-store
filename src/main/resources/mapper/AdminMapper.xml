@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace ="com.solvd.onlinestore.persistence.AdminRepository">
+<mapper namespace="com.solvd.onlinestore.persistence.AdminRepository">
     <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
         insert into admins (first_name, last_name, salary) values (#{firstName}, #{lastName}, #{salary})
     </insert>
 
-    <select id= "findByLastName" resultMap="AdminResultMap">
+    <select id="findById" resultMap="AdminResultMap">
+        select a.id as admin_id, a.last_name as admin_last_name from admins a where a.id = #{id}
+    </select>
+
+    <select id="findByLastName" resultMap="AdminResultMap">
         select id from admins where last_name = #{lastName}
     </select>
 
     <resultMap id="AdminResultMap" type="com.solvd.onlinestore.domain.onlinestore.Admin" autoMapping="false">
         <id property="id" column="id"/>
-        <result property= "lastName" column="last_name"/>
+        <result property="lastName" column="last_name"/>
     </resultMap>
 
-    <update id= "update" useGeneratedKeys="false">
+    <update id="update" useGeneratedKeys="false">
         update admins set last_name = #{lastName} where id = #{id}
     </update>
 
-    <delete id= "delete">
+    <delete id="delete">
         delete from admins where id = #{id}
     </delete>
 </mapper>

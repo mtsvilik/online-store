@@ -64,6 +64,27 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
+    public List<Book> findById(Long id) {
+        List<Book> books;
+        Connection connection = CONNECTION_POOL.getConnection();
+        String select = "select b.id as book_id, b.name as book_name from books b where b.id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            books = mapBooks(resultSet);
+            while (resultSet.next()) {
+                id = resultSet.getLong("book_id");
+                String serviceName = resultSet.getString("book_name");
+            }
+        } catch (SQLException e) {
+            throw new DataNotFoundException("Can't find a book", e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return books;
+    }
+
+    @Override
     public List<Book> findAll() {
         List<Book> books;
         Connection connection = CONNECTION_POOL.getConnection();

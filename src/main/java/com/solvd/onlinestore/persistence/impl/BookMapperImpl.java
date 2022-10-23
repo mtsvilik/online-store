@@ -19,6 +19,14 @@ public class BookMapperImpl implements BookRepository {
     }
 
     @Override
+    public List<Book> findById(Long id) {
+        try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
+            BookRepository bookRepository = sqlSession.getMapper(BookRepository.class);
+            return bookRepository.findById(id);
+        }
+    }
+
+    @Override
     public List<Book> findAll() {
         try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
             BookRepository bookRepository = sqlSession.getMapper(BookRepository.class);

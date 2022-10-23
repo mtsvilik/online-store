@@ -1,11 +1,10 @@
 package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.book.PublishingHouse;
+import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.persistence.PublishingHouseRepository;
 import com.solvd.onlinestore.persistence.impl.PublishingHouseMapperImpl;
 import com.solvd.onlinestore.service.PublishingHouseService;
-
-import java.util.Optional;
 
 public class PublishingHouseServiceImpl implements PublishingHouseService {
 
@@ -24,8 +23,9 @@ public class PublishingHouseServiceImpl implements PublishingHouseService {
     }
 
     @Override
-    public Optional<PublishingHouse> getByName(String name) {
-        return publishingHouseRepository.findByName(name);
+    public PublishingHouse getByName(String name) {
+        return publishingHouseRepository.findByName(name)
+                .orElseThrow(() -> new DataNotFoundException("Publishing house not found"));
     }
 
     @Override

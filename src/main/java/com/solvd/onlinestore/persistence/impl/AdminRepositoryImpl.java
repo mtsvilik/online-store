@@ -1,10 +1,10 @@
 package com.solvd.onlinestore.persistence.impl;
 
-import com.solvd.onlinestore.domain.onlinestore.Admin;
 import com.solvd.onlinestore.domain.exception.DataCreateException;
 import com.solvd.onlinestore.domain.exception.DataDeleteException;
 import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.domain.exception.DataUpdateException;
+import com.solvd.onlinestore.domain.onlinestore.Admin;
 import com.solvd.onlinestore.persistence.AdminRepository;
 import com.solvd.onlinestore.persistence.ConnectionPool;
 
@@ -37,6 +37,11 @@ public class AdminRepositoryImpl implements AdminRepository {
     }
 
     @Override
+    public Admin findById(Long id) {
+        return null;
+    }
+
+    @Override
     public Optional<Admin> findByLastName(String lastName) {
         Admin result = null;
         Connection connection = CONNECTION_POOL.getConnection();
@@ -57,12 +62,12 @@ public class AdminRepositoryImpl implements AdminRepository {
     }
 
     @Override
-    public void update(Admin admin) {
+    public void update(Long id, String lastName) {
         Connection connection = CONNECTION_POOL.getConnection();
         String update = "update admins set last_name = ? where id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
-            preparedStatement.setString(1, admin.getLastName());
-            preparedStatement.setLong(2, admin.getId());
+            preparedStatement.setString(1, lastName);
+            preparedStatement.setLong(2, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DataUpdateException("Can't update an admin", e);

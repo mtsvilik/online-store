@@ -1,11 +1,10 @@
 package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.customer.Customer;
+import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.persistence.CustomerRepository;
 import com.solvd.onlinestore.persistence.impl.CustomerMapperImpl;
 import com.solvd.onlinestore.service.CustomerService;
-
-import java.util.Optional;
 
 public class CustomerServiceImpl implements CustomerService {
 
@@ -24,8 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> getByLastName(String lastName) {
-        return customerRepository.findByLastName(lastName);
+    public Customer getByLastName(String lastName) {
+        return customerRepository.findByLastName(lastName)
+                .orElseThrow(() -> new DataNotFoundException("Customer not found"));
     }
 
     @Override

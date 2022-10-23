@@ -9,6 +9,8 @@ public interface BookRepository {
 
     void create(@Param("onlineStoreId") Long onlineStoreId, @Param("publishingHouseId") Long publishingHouseId, @Param("book") Book book);
 
+    List<Book> findById(Long id);
+
     List<Book> findAll();
 
     void update(Book book);

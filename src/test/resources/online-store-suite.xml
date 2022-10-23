@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="online-store-suite" parallel="methods" thread-count="5">
+    <test name="online-store-test">
+        <classes>
+            <class name="com.solvd.onlinestore.AdminTest"/>
+            <class name="com.solvd.onlinestore.BookTest"/>
+            <class name="com.solvd.onlinestore.PublishingHouseTest"/>
+        </classes>
+    </test>
+</suite>

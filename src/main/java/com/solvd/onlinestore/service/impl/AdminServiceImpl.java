@@ -1,11 +1,10 @@
 package com.solvd.onlinestore.service.impl;
 
+import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.domain.onlinestore.Admin;
 import com.solvd.onlinestore.persistence.AdminRepository;
 import com.solvd.onlinestore.persistence.impl.AdminMapperImpl;
 import com.solvd.onlinestore.service.AdminService;
-
-import java.util.Optional;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -24,13 +23,19 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Optional<Admin> getByLastName(String lastName) {
-        return adminRepository.findByLastName(lastName);
+    public Admin getById(Long id) {
+        return adminRepository.findById(id);
     }
 
     @Override
-    public void update(Admin admin) {
-        adminRepository.update(admin);
+    public Admin getByLastName(String lastName) {
+        return adminRepository.findByLastName(lastName)
+                .orElseThrow(() -> new DataNotFoundException("Admin not found"));
+    }
+
+    @Override
+    public void update(Long id, String lastName) {
+        adminRepository.update(id, lastName);
     }
 
     @Override
