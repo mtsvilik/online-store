@@ -1,6 +1,7 @@
 package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.book.Book;
+import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.persistence.BookRepository;
 import com.solvd.onlinestore.persistence.impl.BookMapperImpl;
 import com.solvd.onlinestore.service.BookService;
@@ -26,6 +27,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getById(Long id) {
         return bookRepository.findById(id);
+    }
+
+    @Override
+    public Book getBookById(Long id) {
+        return bookRepository.findBookById(id)
+                .orElseThrow(() -> new DataNotFoundException("Book not found"));
     }
 
     @Override

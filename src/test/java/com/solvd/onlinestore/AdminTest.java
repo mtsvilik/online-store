@@ -61,7 +61,7 @@ public class AdminTest {
     }
 
     @Test(testName = "Verify that the admin exists")
-    public void verifyAdminGetByLastName() {
+    public void verifyAdminGetByLastNameTest() {
         Admin admin = ADMIN_SERVICE.getByLastName("Denisov");
 
         Assert.assertNotNull(admin);

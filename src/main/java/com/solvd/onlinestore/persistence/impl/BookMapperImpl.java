@@ -6,6 +6,7 @@ import com.solvd.onlinestore.persistence.MyBatisConfig;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BookMapperImpl implements BookRepository {
 
@@ -23,6 +24,14 @@ public class BookMapperImpl implements BookRepository {
         try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
             BookRepository bookRepository = sqlSession.getMapper(BookRepository.class);
             return bookRepository.findById(id);
+        }
+    }
+
+    @Override
+    public Optional<Book> findBookById(Long id) {
+        try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
+            BookRepository bookRepository = sqlSession.getMapper(BookRepository.class);
+            return bookRepository.findBookById(id);
         }
     }
 

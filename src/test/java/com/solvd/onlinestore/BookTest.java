@@ -57,19 +57,23 @@ public class BookTest {
         Assert.assertNotNull(book.getPrice(), "Book price is null");
     }
 
-    @Test(testName = "Check that each book has a unique name")
-    public void checkBookHasUniqueNameTest() {
-        List<Book> books = BOOK_SERVICE.getAll();
-
-        Assert.assertNotEquals(books.get(0).getName(), books.get(1).getName());
-    }
-
     @Test(testName = "Check that book's name is not null", dataProvider = "checkBooksId")
     public void checkBooksNameIsNotNullTest(Long id) {
         List<Book> books = BOOK_SERVICE.getById(id);
 
         SoftAssert softAssert = new SoftAssert();
         books.forEach(book -> softAssert.assertNotNull(book.getName(), "Book name is null" + book.getId()));
+        softAssert.assertAll();
+    }
+
+    @Test(testName = "Verify that book's name was updated")
+    public void verifyUpdateBookNameTest() {
+        Book book = BOOK_SERVICE.getBookById(16L);
+        String newBookName = "Misery";
+        book.setName("Misery");
+        BOOK_SERVICE.update(book);
+        Book updatedBook = BOOK_SERVICE.getBookById(book.getId());
+        Assert.assertEquals(updatedBook.getName(), newBookName);
     }
 
     @Test(testName = "Verify that book delete", dataProvider = "deleteBooksId")
@@ -78,9 +82,7 @@ public class BookTest {
         List<Book> books = BOOK_SERVICE.getById(id);
 
         SoftAssert softAssert = new SoftAssert();
-        books.forEach(book -> {
-            softAssert.assertNull(book, "Book with id wasn't delete" + book.getId());
-        });
+        books.forEach(book -> softAssert.assertNull(book, "Book with id wasn't delete" + book.getId()));
         softAssert.assertAll();
     }
 

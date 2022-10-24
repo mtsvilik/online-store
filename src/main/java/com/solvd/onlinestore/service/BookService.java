@@ -10,6 +10,8 @@ public interface BookService {
 
     List<Book> getById(Long id);
 
+    Book getBookById(Long id);
+
     List<Book> getAll();
 
     void update(Book book);

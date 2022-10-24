@@ -16,6 +16,7 @@ import com.solvd.onlinestore.persistence.ConnectionPool;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BookRepositoryImpl implements BookRepository {
 
@@ -82,6 +83,11 @@ public class BookRepositoryImpl implements BookRepository {
             CONNECTION_POOL.releaseConnection(connection);
         }
         return books;
+    }
+
+    @Override
+    public Optional<Book> findBookById(Long id) {
+        return Optional.empty();
     }
 
     @Override
