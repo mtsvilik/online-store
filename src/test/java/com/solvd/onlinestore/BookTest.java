@@ -66,6 +66,26 @@ public class BookTest {
         softAssert.assertAll();
     }
 
+    @Test(testName = "Check that each book has a unique name")
+    public void checkBookHasUniqueNameTest() {
+        List<Book> books = BOOK_SERVICE.getAll();
+
+        Assert.assertNotEquals(books.get(0).getName(), books.get(1).getName());
+    }
+
+    @Test(testName = "Check that each book has a unique id")
+    public void checkBookHasUniqueIdTest() {
+        List<Book> books = BOOK_SERVICE.getAll();
+
+        for (int i = 0; i < books.size(); i++) {
+            SoftAssert softAssert = new SoftAssert();
+            for (int j = i + 1; j < books.size(); j++) {
+                softAssert.assertNotEquals(books.get(i).getId(), books.get(j).getId());
+            }
+            softAssert.assertAll();
+        }
+    }
+
     @Test(testName = "Verify that book's name was updated")
     public void verifyUpdateBookNameTest() {
         Book book = BOOK_SERVICE.getBookById(16L);
