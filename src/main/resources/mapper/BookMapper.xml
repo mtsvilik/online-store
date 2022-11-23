@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace ="com.solvd.onlinestore.persistence.BookRepository">
+<mapper namespace="com.solvd.onlinestore.persistence.BookRepository">
     <insert id="create" keyColumn="id" keyProperty="book.id" useGeneratedKeys="true">
         insert into books (online_store_id, publishing_house_id, name, genre, bestseller, sale, price)
-        values (#{onlineStoreId}, #{publishingHouseId}, #{book.name}, #{book.genre}, #{book.bestseller}, #{book.sale}, #{book.price})
+        values (#{onlineStoreId}, #{publishingHouseId}, #{book.name}, #{book.genre}, #{book.bestseller}, #{book.sale},
+        #{book.price})
     </insert>
 
-    <select id= "findAll" resultMap="BookResultMap">
+    <select id="findById" resultMap="BookResultMap">
+        select b.id as book_id, b.name as book_name from books b where b.id = #{id}
+    </select>
+
+    <select id="findBookById" resultMap="BookResultMap">
+        select b.id as book_id, b.name as book_name from books b where b.id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="BookResultMap">
         select
-        b.id as book_id, b.name as book_name, b.genre as book_genre, b.bestseller as book_bestseller, b.sale as book_sale, b.price as book_price,
+        b.id as book_id, b.name as book_name, b.genre as book_genre, b.bestseller as book_bestseller, b.sale as
+        book_sale, b.price as book_price,
         ph.id as publishing_house_id, ph.name as publishing_house_name,
         a.id as author_id, a.first_name as author_first_name, a.last_name as author_last_name,
         c.id as author_country_id, c.name as author_country_name, c.code as author_country_code
@@ -25,22 +35,22 @@
 
     <resultMap id="BookResultMap" type="com.solvd.onlinestore.domain.book.Book" autoMapping="false">
         <id property="id" column="book_id"/>
-        <result property= "name" column="book_name"/>
-        <result property= "genre" column="book_genre"/>
-        <result property= "bestseller" column="book_bestseller"/>
-        <result property= "sale" column="book_sale"/>
-        <result property= "price" column="book_price"/>
-        <association property= "author" columnPrefix="author_"
+        <result property="name" column="book_name"/>
+        <result property="genre" column="book_genre"/>
+        <result property="bestseller" column="book_bestseller"/>
+        <result property="sale" column="book_sale"/>
+        <result property="price" column="book_price"/>
+        <association property="author" columnPrefix="author_"
                      resultMap="com.solvd.onlinestore.persistence.AuthorRepository.AuthorResultMap"/>
-        <association property= "publishingHouse" columnPrefix="publishing_house_"
+        <association property="publishingHouse" columnPrefix="publishing_house_"
                      resultMap="com.solvd.onlinestore.persistence.PublishingHouseRepository.PublishingHouseResultMap"/>
     </resultMap>
 
-    <update id= "update" useGeneratedKeys="false">
+    <update id="update" useGeneratedKeys="false">
         update books set name = #{name} where id = #{id}
     </update>
 
-    <delete id= "delete">
+    <delete id="delete">
         delete from books where id = #{id}
     </delete>
 </mapper>

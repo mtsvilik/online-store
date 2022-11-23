@@ -1,11 +1,10 @@
 package com.solvd.onlinestore.service.impl;
 
 import com.solvd.onlinestore.domain.author.Country;
+import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.persistence.CountryRepository;
 import com.solvd.onlinestore.persistence.impl.CountryMapperImpl;
 import com.solvd.onlinestore.service.CountryService;
-
-import java.util.Optional;
 
 public class CountryServiceImpl implements CountryService {
 
@@ -23,7 +22,8 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public Optional<Country> getByName(String name) {
-        return countryRepository.findByName(name);
+    public Country getByName(String name) {
+        return countryRepository.findByName(name)
+                .orElseThrow(() -> new DataNotFoundException("Country not found"));
     }
 }

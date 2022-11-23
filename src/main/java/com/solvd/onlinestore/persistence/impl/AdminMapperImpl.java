@@ -18,6 +18,14 @@ public class AdminMapperImpl implements AdminRepository {
     }
 
     @Override
+    public Admin findById(Long id) {
+        try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
+            AdminRepository adminRepository = sqlSession.getMapper(AdminRepository.class);
+            return adminRepository.findById(id);
+        }
+    }
+
+    @Override
     public Optional<Admin> findByLastName(String lastName) {
         try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
             AdminRepository adminRepository = sqlSession.getMapper(AdminRepository.class);
@@ -26,10 +34,10 @@ public class AdminMapperImpl implements AdminRepository {
     }
 
     @Override
-    public void update(Admin admin) {
+    public void update(Long id, String lastName) {
         try (SqlSession sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true)) {
             AdminRepository adminRepository = sqlSession.getMapper(AdminRepository.class);
-            adminRepository.update(admin);
+            adminRepository.update(id, lastName);
         }
     }
 

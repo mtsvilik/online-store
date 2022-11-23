@@ -8,6 +8,10 @@ public interface BookService {
 
     Book create(Long onlineStoreId, Long publishingHouseId, Book book);
 
+    List<Book> getById(Long id);
+
+    Book getBookById(Long id);
+
     List<Book> getAll();
 
     void update(Book book);

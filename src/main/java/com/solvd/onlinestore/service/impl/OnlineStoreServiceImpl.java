@@ -1,11 +1,10 @@
 package com.solvd.onlinestore.service.impl;
 
+import com.solvd.onlinestore.domain.exception.DataNotFoundException;
 import com.solvd.onlinestore.domain.onlinestore.OnlineStore;
 import com.solvd.onlinestore.persistence.OnlineStoreRepository;
 import com.solvd.onlinestore.persistence.impl.OnlineStoreMapperImpl;
 import com.solvd.onlinestore.service.OnlineStoreService;
-
-import java.util.Optional;
 
 public class OnlineStoreServiceImpl implements OnlineStoreService {
 
@@ -24,8 +23,9 @@ public class OnlineStoreServiceImpl implements OnlineStoreService {
     }
 
     @Override
-    public Optional<OnlineStore> getByName(String name) {
-        return onlineStoreRepository.findByName(name);
+    public OnlineStore getByName(String name) {
+        return onlineStoreRepository.findByName(name)
+                .orElseThrow(() -> new DataNotFoundException("Online store not found"));
     }
 
     @Override

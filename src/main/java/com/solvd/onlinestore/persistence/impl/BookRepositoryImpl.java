@@ -16,6 +16,7 @@ import com.solvd.onlinestore.persistence.ConnectionPool;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BookRepositoryImpl implements BookRepository {
 
@@ -61,6 +62,32 @@ public class BookRepositoryImpl implements BookRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
+    }
+
+    @Override
+    public List<Book> findById(Long id) {
+        List<Book> books;
+        Connection connection = CONNECTION_POOL.getConnection();
+        String select = "select b.id as book_id, b.name as book_name from books b where b.id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            books = mapBooks(resultSet);
+            while (resultSet.next()) {
+                id = resultSet.getLong("book_id");
+                String serviceName = resultSet.getString("book_name");
+            }
+        } catch (SQLException e) {
+            throw new DataNotFoundException("Can't find a book", e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+        return books;
+    }
+
+    @Override
+    public Optional<Book> findBookById(Long id) {
+        return Optional.empty();
     }
 
     @Override
